@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_bottom_home"
+        android:enabled="true"
+        android:title="@string/title_home"
+        android:orderInCategory="1"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/cartFragment"
+        android:icon="@drawable/ic_bottom_cart"
+        android:enabled="true"
+        app:showAsAction="always"
+        android:orderInCategory="2"
+        android:title="@string/txt_cart"
+        />
+    <item
+        android:id="@+id/notificationFragment"
+        android:icon="@drawable/bg_bottom_bell"
+        android:enabled="true"
+        app:showAsAction="always"
+        android:orderInCategory="3"
+        android:title="@string/txt_notify"
+        />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_bottom_person"
+        android:enabled="true"
+        app:showAsAction="always"
+        android:orderInCategory="4"
+        android:title="@string/txt_profile"
+        />
+</menu>

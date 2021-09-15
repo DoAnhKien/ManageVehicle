@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1022237959322",
+    "project_id": "vehicles-sale",
+    "storage_bucket": "vehicles-sale.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022237959322:android:97a4ebf58031ed77216b23",
+        "android_client_info": {
+          "package_name": "com.example.vehiclessale"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022237959322-f9s4lmjr06211ccv4cviv7mhidp020pj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi22Plw_0P-hy3xDx1rVwrneQF5n4haOU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022237959322-f9s4lmjr06211ccv4cviv7mhidp020pj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleSubTotal"
+        android:layout_width="@dimen/_0"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_16"
+        android:layout_marginRight="@dimen/_16"
+        android:text="@string/txt_subtotal"
+        android:textAllCaps="false"
+        android:textColor="@color/text"
+        android:textSize="@dimen/txt_size_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnPayment"
+        app:layout_constraintEnd_toStartOf="@id/btnPayment"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSubTotal"
+        android:layout_width="@dimen/_100"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_16"
+        android:layout_marginTop="@dimen/_10"
+        android:layout_marginRight="@dimen/_16"
+        android:text="0 đ"
+        android:textAllCaps="false"
+        android:textColor="@color/red"
+        android:textSize="@dimen/txt_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleSubTotal"
+        app:layout_constraintEnd_toStartOf="@id/btnPayment"
+        app:layout_constraintBottom_toBottomOf="@id/btnPayment"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPayment"
+        android:layout_width="@dimen/_0"
+        android:layout_height="@dimen/_45"
+        android:layout_marginLeft="@dimen/_16"
+        android:layout_marginTop="@dimen/_20"
+        android:layout_marginRight="@dimen/_16"
+        android:layout_marginBottom="@dimen/_10"
+        android:background="@drawable/bg_btn"
+        android:text="@string/txt_payment"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_size_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvSubTotal"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">Vehicles Sale</string>
+    <string name="title_home">Home</string>
+    <string name="txt_chat">Chat</string>
+    <string name="txt_cart">Cart</string>
+    <string name="txt_Order">Orders</string>
+    <string name="txt_My_Purchase">My Purchases</string>
+    <string name="txt_My_Product">My Products</string>
+
+    <string name="txt_Noti">Thông báo</string>
+    <string name="txt_profile">Me</string>
+    <string name="txt_motorcycle">Xe máy</string>
+    <string name="txt_motor">Xe mô tô</string>
+    <string name="txt_car">Xe hơi</string>
+    <string name="txt_bicycle">Xe đạp</string>
+    <string name="txt_login">Sign in</string>
+    <string name="txt_register">Sign up</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_address">Address</string>
+    <string name="txt_name">UserName</string>
+    <string name="txt_phone">Phone Number</string>
+    <string name="txt_email_1">Email :</string>
+    <string name="phone_1">Phone :</string>
+    <string name="log_out">Log out</string>
+
+    <string name="txt_pass">Password</string>
+    <string name="txt_confirm_pass">Confirm Password</string>
+
+    <string name="txt_saler">Seller</string>
+    <string name="txt_buyer">Customer</string>
+    <string name="txt_not_register_yet">Haven\'t register yet ?</string>
+    <string name="txt_notify">Notification</string>
+    <string name="txt_Cancel">Close</string>
+    <string name="txt_RegisterSuccess">Register Successful</string>
+    <string name="title_xe_may">Hãng Honda</string>
+    <string name="des_xe_may">Phân khúc xe máy số phổ thông trang bị động cơ 110cc vẫn hút khách nhờ thiết kế đơn giản, dễ sử dụng</string>
+    <string name="txt_check_info">Vui lòng kiểm tra lại thông tin</string>
+    <string name="title_name_product">Vehicle Name :</string>
+    <string name="type_name_product">Type Vehicle Name</string>
+    <string name="title_des_product">Vehicle Description :</string>
+    <string name="type_des_product">Type Vehicle Description </string>
+    <string name="title_price_product">Price :</string>
+    <string name="title_contact">Contact Phone :</string>
+    <string name="type_price_product">Nhập giá tiền (theo đơn vị VND)</string>
+    <string name="add_product">Add Product</string>
+    <string name="save_product">Save</string>
+    <string name="content_des_product">The least 100 characters</string>
+    <string name="contetn_price_product">Price</string>
+    <string name="title_your_phone">Type your phone number</string>
+
+    <string name="typing_search">Vehicle Type Search</string>
+    <string name="choose_method">Choose</string>
+    <string name="choose_capture">Capture</string>
+    <string name="choose_gallery">Gallery</string>
+    <string name="add_product_success">Add Product Successful</string>
+    <string name="title_Profile">Profile</string>
+    <string name="txt_checkImgs">You must upload least one image</string>
+    <string name="txt_buy_now">Buy Now</string>
+    <string name="txt_product_detail">Product Detail</string>
+    <string name="txt_list_chat">Chats List</string>
+    <string name="txt_type">User Type</string>
+    <string name="txt_lst_chat">Interested People List</string>
+    <string name="txt_fill">Please fill in all information</string>
+    <string name="txt_add_cart">Added To Cart</string>
+    <string name="txt_add">Add To Cart</string>
+
+    <string name="txt_delete">Delete</string>
+    <string name="txt_shopping_cart">Shopping Cart</string>
+    <string name="txt_please_login">Please Login to continue</string>
+    <string name="txt_payment">Check Out</string>
+    <string name="txt_noti_cart">Product had in cart</string>
+    <string name="txt_subtotal">SubTotal : </string>
+    <string name="txt_delivery">Delivery Address : </string>
+    <string name="txt_place_order">Place Order</string>
+    <string name="txt_choose_product">You haven\'t selected any items for checkout</string>
+    <string name="txt_payment_method">Payment Method : </string>
+    <string name="txt_method">Payment On Delivery </string>
+    <string name="txt_total_payment">Total Payment </string>
+    <string name="txt_order_success">Order successful \nPlease wait for response from the shop</string>
+    <string name="txt_new_order">You have the new order</string>
+    <string name="txt_notify_my_order">Your order is %s</string>
+
+    <string name="txt_see_new_order">Seen</string>
+    <string name="txt_to_ship">To Ship</string>
+    <string name="txt_to_Confirm">To Confirm</string>
+
+    <string name="txt_Complete">Completed</string>
+    <string name="txt_Delivering">Delivering</string>
+    <string name="txt_Order_delivering">Order\'s Status is Delivering</string>
+    <string name="txt_Product_delivering">Product\'s Status is Delivering</string>
+
+    <string name="txt_Order_Complete">Successful</string>
+    <string name="txt_order_success_Complete">Delivering Successful</string>
+    <string name="txt_Contact">Contact Us</string>
+    <string name="txt_field_required">This field is required</string>
+    <string name="txt_compare_pass">Confirm new password doesn\'t match</string>
+    <string name="txt_format_email">Format email is not correct</string>
+    <string name="txt_format_phone">Phone number is not correct</string>
+    <string name="txt_format_Pass">Password must have least 6 characters</string>
+
+
+
+</resources>

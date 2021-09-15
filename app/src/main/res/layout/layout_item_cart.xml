@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipelayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:dragEdge="right"
+    app:mode="same_level">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/layout_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_1"
+            android:background="@color/red">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/_16"
+                android:text="@string/txt_delete"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_16" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUserBuyer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buyer: TTTTTTTT"
+            android:textColor="@color/color_blue_1"
+            android:paddingLeft="@dimen/_10"
+            android:paddingTop="@dimen/_5"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:textSize="@dimen/txt_size_18"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img"
+                android:layout_width="@dimen/_100"
+                android:layout_height="@dimen/_100"
+                android:src="@drawable/xe_may"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@id/checkbox"
+                app:layout_constraintTop_toTopOf="@id/checkbox"
+                app:layout_constraintStart_toEndOf="@id/checkbox"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
+                android:layout_width="@dimen/_0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/title_home"
+                android:textColor="@color/text"
+                android:textSize="@dimen/txt_size_16"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDes"
+                android:layout_width="@dimen/_0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16"
+                android:layout_marginTop="@dimen/_5"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingEnd="@dimen/_10"
+                android:text="@string/des_xe_may"
+                android:textColor="@color/text"
+                android:textSize="@dimen/txt_size_16"
+                app:layout_constraintStart_toEndOf="@id/img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPrice"
+                android:layout_width="@dimen/_0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16"
+                android:layout_marginTop="@dimen/_5"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="10,000,000"
+                android:textColor="@color/red"
+                android:textSize="@dimen/txt_size_16"
+                app:layout_constraintBottom_toBottomOf="@id/img"
+                app:layout_constraintStart_toEndOf="@id/img"
+                app:layout_constraintTop_toBottomOf="@id/tvDes" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatus"
+                android:layout_width="@dimen/_0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16"
+                android:layout_marginTop="@dimen/_5"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="Sold out"
+                android:visibility="gone"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/txt_size_12"
+                app:layout_constraintBottom_toBottomOf="@id/img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDes" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDelivering"
+            android:layout_width="@dimen/_150"
+            android:layout_height="@dimen/_40"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_5"
+            android:layout_marginRight="@dimen/_16"
+            android:layout_marginBottom="@dimen/_5"
+            android:textAllCaps="false"
+            android:textSize="@dimen/txt_size_16"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:text="@string/txt_Delivering"
+            android:background="@drawable/bg_btn"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1"
+            android:background="@color/grey_2" />
+    </LinearLayout>
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

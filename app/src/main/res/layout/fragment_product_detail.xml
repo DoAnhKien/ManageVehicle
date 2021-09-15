@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".productDetail.ProductDetailFragment">
+
+
+    <include
+        android:id="@+id/layout_header"
+        layout="@layout/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@id/layout_header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5"
+                android:layout_marginTop="@dimen/_5"
+                android:layout_marginEnd="@dimen/_5"
+                app:cardCornerRadius="6dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/imageSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_250"
+                    app:sliderIndicatorGravity="center_horizontal|bottom"
+                    app:sliderIndicatorMargin="15dp"
+                    app:sliderIndicatorOrientation="horizontal"
+                    app:sliderIndicatorPadding="3dp"
+                    app:sliderIndicatorRadius="2dp"
+                    app:sliderIndicatorSelectedColor="#5A5A5A"
+                    app:sliderIndicatorUnselectedColor="#FFF" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16"
+                android:layout_marginTop="@dimen/_16"
+                android:layout_marginEnd="@dimen/_16"
+                android:text="@string/title_your_phone"
+                android:textColor="@color/text"
+                android:textSize="@dimen/txt_size_18"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/cardview" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16"
+                android:layout_marginTop="@dimen/_10"
+                android:layout_marginEnd="@dimen/_16"
+                android:text="@string/title_your_phone"
+                android:textColor="@color/text"
+                android:textSize="@dimen/txt_size_16"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16"
+                android:layout_marginTop="@dimen/_10"
+                android:layout_marginEnd="@dimen/_16"
+                android:text="@string/title_your_phone"
+                android:textColor="@color/red"
+                android:textSize="@dimen/txt_size_16"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/tvDes" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5"
+                android:layout_marginTop="@dimen/_5"
+                android:layout_marginRight="@dimen/_5"
+                android:layout_marginBottom="@dimen/_5"
+                android:elevation="@dimen/_10"
+                app:cardCornerRadius="@dimen/_10"
+                app:cardElevation="@dimen/_10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPrice">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/_5">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvContact"
+                        android:layout_width="@dimen/_0"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_16"
+                        android:layout_marginEnd="@dimen/_16"
+                        android:paddingTop="@dimen/_10"
+                        android:paddingBottom="@dimen/_10"
+                        android:text="@string/txt_Contact"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/txt_size_18"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/imgArrow"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgArrow"
+                        android:layout_width="@dimen/_25"
+                        android:layout_height="@dimen/_25"
+                        android:layout_marginStart="@dimen/_16"
+                        android:layout_marginTop="@dimen/_10"
+                        android:layout_marginEnd="@dimen/_16"
+                        android:text="@string/title_your_phone"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/txt_size_18"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                        app:layout_constraintStart_toEndOf="@id/tvContact"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/viewContact"
+                        android:layout_width="@dimen/_0"
+                        android:layout_height="@dimen/_0"
+                        app:layout_constraintTop_toTopOf="@id/tvContact"
+                        app:layout_constraintBottom_toBottomOf="@id/tvContact"
+                        app:layout_constraintEnd_toEndOf="@id/imgArrow"
+                        app:layout_constraintStart_toStartOf="@id/tvContact"/>
+                    <include
+                        android:id="@+id/layout_notify"
+                        app:layout_constraintTop_toBottomOf="@id/tvContact"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="@dimen/_5"
+                        android:layout_marginRight="@dimen/_5"
+                        android:layout_marginBottom="@dimen/_5"
+                        layout="@layout/layout_noti_seller"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1"
+        android:background="@color/grey_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nested" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/_50" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/_100" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgPhone"
+        android:layout_width="@dimen/_30"
+        android:layout_height="@dimen/_30"
+        android:layout_marginStart="@dimen/_16"
+        android:src="@drawable/ic_phone_call"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgChat"
+        android:layout_width="@dimen/_30"
+        android:layout_height="@dimen/_30"
+        android:layout_marginStart="@dimen/_10"
+        android:src="@drawable/ic_chat_"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline1"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBuyNow"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_45"
+        android:layout_margin="@dimen/_16"
+        android:background="@drawable/bg_btn"
+        android:text="@string/txt_add"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

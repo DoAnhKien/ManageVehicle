@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".chat.ChatFragment">
+
+
+    <include
+        android:id="@+id/layout_header"
+        layout="@layout/layout_header"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/_10"
+        android:elevation="@dimen/_10"
+        android:layout_marginTop="@dimen/_5"
+        android:layout_marginLeft="@dimen/_5"
+        android:layout_marginRight="@dimen/_5"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        app:layout_constraintTop_toBottomOf="@id/layout_header"
+        app:layout_constraintBottom_toTopOf="@id/rvMess">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img"
+                android:layout_width="@dimen/_80"
+                android:layout_height="@dimen/_80"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvDes"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDes"
+                android:layout_width="@dimen/_0"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5"
+                android:layout_marginTop="@dimen/_5"
+                android:textColor="@color/text"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="@string/title_des_product"
+                app:layout_constraintStart_toEndOf="@id/img"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPrice"
+                android:layout_width="@dimen/_0"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:text="@string/title_des_product"
+                app:layout_constraintStart_toEndOf="@id/img"
+                app:layout_constraintTop_toBottomOf="@id/tvDes"
+                app:layout_constraintBottom_toBottomOf="@id/img"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMess"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0"
+        android:padding="@dimen/_10"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/cardview"
+        app:layout_constraintBottom_toTopOf="@+id/edtTypeMess"/>
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtTypeMess"
+        android:layout_width="@dimen/_0"
+        android:layout_height="wrap_content"
+        android:hint="type"
+        android:padding="@dimen/_10"
+        android:textColor="@color/text"
+        android:textSize="@dimen/txt_size_16"
+        android:textColorHint="@color/grey"
+        android:background="@drawable/bg_edt"
+        android:layout_margin="@dimen/_10"
+        app:layout_constraintTop_toBottomOf="@+id/rvMess"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgSend"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgSend"
+        android:layout_width="@dimen/_40"
+        android:layout_height="@dimen/_40"
+        android:src="@drawable/ic_send"
+        android:layout_marginEnd="@dimen/_5"
+        app:layout_constraintTop_toTopOf="@id/edtTypeMess"
+        app:layout_constraintStart_toEndOf="@id/edtTypeMess"
+        app:layout_constraintBottom_toBottomOf="@id/edtTypeMess"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

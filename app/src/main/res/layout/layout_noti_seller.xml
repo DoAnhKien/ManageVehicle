@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNameSeller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16"
+        android:layout_marginTop="@dimen/_10"
+        android:layout_marginEnd="@dimen/_16"
+        android:text="@string/txt_Contact"
+        android:textColor="@color/text"
+        android:textSize="@dimen/txt_size_16"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16"
+        android:layout_marginTop="@dimen/_10"
+        android:layout_marginEnd="@dimen/_16"
+        android:text="@string/title_your_phone"
+        android:textColor="@color/text"
+        android:textSize="@dimen/txt_size_16"
+        app:layout_constraintTop_toBottomOf="@id/tvNameSeller" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16"
+        android:layout_marginTop="@dimen/_10"
+        android:layout_marginEnd="@dimen/_16"
+        android:text="@string/title_your_phone"
+        android:textColor="@color/text"
+        android:textSize="@dimen/txt_size_16"
+        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16"
+        android:layout_marginTop="@dimen/_10"
+        android:layout_marginEnd="@dimen/_16"
+        android:text="@string/title_your_phone"
+        android:textColor="@color/text"
+        android:textSize="@dimen/txt_size_16"
+        app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
