@@ -15,6 +15,7 @@ class FunctionAdapter(var list: MutableList<FunctionData> = mutableListOf()): Re
 
 
     var onItemCallBack: (FunctionData) -> Unit = {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view: View = inflater.inflate(R.layout.layout_item_card_profile, parent, false)

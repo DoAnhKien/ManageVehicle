@@ -22,5 +22,11 @@
     <color name="color_blue">#57BDCA</color>
     <color name="color_blue_1">#3F6C45</color>
 
+    <color name="orange">#FF5722</color>
+    <color name="main2">#3F51B5</color>
+    <color name="main">#93A1EF</color>
+    <color name="nap">#3FB545</color>
+    <color name="rut">#AF0225</color>
+
 
 </resources>

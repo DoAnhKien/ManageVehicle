@@ -22,6 +22,9 @@
     <string name="txt_email_1">Email :</string>
     <string name="phone_1">Phone :</string>
     <string name="log_out">Log out</string>
+    <string name="edit_user">Edit Information</string>
+    <string name="save_user_information">Save Information</string>
+    <string name="cancel_user_information">Cancel Information</string>
 
     <string name="txt_pass">Password</string>
     <string name="txt_confirm_pass">Confirm Password</string>
@@ -97,7 +100,6 @@
     <string name="txt_format_email">Format email is not correct</string>
     <string name="txt_format_phone">Phone number is not correct</string>
     <string name="txt_format_Pass">Password must have least 6 characters</string>
-
 
 
 </resources>

@@ -23,7 +23,7 @@ import com.example.vehiclessale.UserPrefs
 import com.example.vehiclessale.login.LoginData
 import com.google.gson.Gson
 
-class ProfileFragment : BaseFragment() {
+class ProfileFragment : BaseFragment(), View.OnClickListener {
 
     lateinit var unbinder: Unbinder
 
@@ -51,6 +51,9 @@ class ProfileFragment : BaseFragment() {
     @BindView(R.id.btnOut)
     lateinit var btnOut: AppCompatButton
 
+    @BindView(R.id.btnEditUser)
+    lateinit var btnEditUserInformation: AppCompatButton
+
     private lateinit var _adapter: FunctionAdapter
 
     override fun initUI() {
@@ -70,11 +73,12 @@ class ProfileFragment : BaseFragment() {
         actionTransition()
         _adapter = FunctionAdapter((prepareData()))
         rvFunctions.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = _adapter
         }
         _adapter.onItemCallBack = {
-            when(it.nameFunction){
+            when (it.nameFunction) {
                 getString(R.string.add_product) -> {
                     findNavController().navigate(R.id.action_profileFragment2_to_addProductFragment)
                 }
@@ -84,35 +88,41 @@ class ProfileFragment : BaseFragment() {
                 getString(R.string.txt_Order) -> {
                     findNavController().navigate(R.id.action_profileFragment2_to_ordersFragment)
                 }
-                getString(R.string.txt_My_Purchase)->{
+                getString(R.string.txt_My_Purchase) -> {
                     findNavController().navigate(R.id.action_profileFragment2_to_purchaseFragment)
                 }
             }
         }
     }
 
-    private fun prepareData(): MutableList<FunctionData>{
-        val listIcon = mutableListOf<Int>(R.drawable.ic_plus, R.drawable.ic_box, R.drawable.ic_clipboard__1, R.drawable.ic_box)
-        val name = mutableListOf(getString(R.string.add_product), getString(R.string.txt_Order), getString(R.string.txt_My_Purchase), getString(R.string.txt_My_Product))
+    private fun prepareData(): MutableList<FunctionData> {
+        val listIcon = mutableListOf<Int>(
+            R.drawable.ic_plus,
+            R.drawable.ic_box,
+            R.drawable.ic_clipboard__1,
+            R.drawable.ic_box
+        )
+        val name = mutableListOf(
+            getString(R.string.add_product),
+            getString(R.string.txt_Order),
+            getString(R.string.txt_My_Purchase),
+            getString(R.string.txt_My_Product)
+        )
         val lst = mutableListOf<FunctionData>()
-        for(i in listIcon.indices)
+        for (i in listIcon.indices)
             lst.add(FunctionData(name[i], listIcon[i]))
         return lst
     }
 
     override fun initControl() {
-        btnOut.setOnClickListener {
-            UserPrefs.clearData(requireContext())
-            // (activity as MainActivity).hideItem("")
-            findNavController().navigate(R.id.action_profileFragment2_to_loginFragment)
-        }
-
-
-
+        btnOut.setOnClickListener(this)
+        btnEditUserInformation.setOnClickListener(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         unbinder = ButterKnife.bind(this, view)
 
@@ -121,8 +131,21 @@ class ProfileFragment : BaseFragment() {
 
     private fun actionTransition() {
         val inflater = TransitionInflater.from(requireContext())
-         exitTransition = inflater.inflateTransition(R.transition.fade)
+        exitTransition = inflater.inflateTransition(R.transition.fade)
         //enterTransition = inflater.inflateTransition(R.transition.fade)
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btnOut -> {
+                UserPrefs.clearData(requireContext())
+                // (activity as MainActivity).hideItem("")
+                findNavController().navigate(R.id.action_profileFragment2_to_loginFragment)
+            }
+            R.id.btnEditUser -> {
+                findNavController().navigate(R.id.action_profileFragment2_to_editUserFragment)
+            }
+        }
     }
 
 

@@ -95,6 +95,9 @@
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
             app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_profileFragment2_to_editUserFragment"
+            app:destination="@id/editUserFragment" />
 
     </fragment>
     <fragment
@@ -242,5 +245,9 @@
             app:popEnterAnim="@anim/enter_from_left"
             app:popExitAnim="@anim/exit_to_right" />
     </fragment>
+    <fragment
+        android:id="@+id/editUserFragment"
+        android:name="com.example.vehiclessale.profile.EditUserFragment"
+        android:label="EditUserFragment" />
 
 </navigation>
