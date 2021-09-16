@@ -24,13 +24,17 @@ import com.example.vehiclessale.R
 import com.example.vehiclessale.dialog.NotifyDialogFragment
 import com.example.vehiclessale.home.VehicleData
 import com.example.vehiclessale.login.LoginData
+import com.example.vehiclessale.utils.Const
 import com.google.android.material.animation.AnimationUtils
 import com.google.firebase.database.*
 import com.google.gson.Gson
 import com.smarteist.autoimageslider.SliderView
 
+import android.net.Uri
+import android.util.Log
 
-class ProductDetailFragment : BaseFragment() {
+
+class ProductDetailFragment : BaseFragment(), OnBottomSheetClick {
 
     @BindView(R.id.tvTitle)
     lateinit var tvTitle: AppCompatTextView
@@ -82,6 +86,7 @@ class ProductDetailFragment : BaseFragment() {
 
     private val args: ProductDetailFragmentArgs by navArgs()
     private lateinit var unbinder: Unbinder
+    private lateinit var bottomSheet: BottomSheetChoosePhoneCall
 
     private val reference: DatabaseReference by lazy {
         FirebaseDatabase.getInstance().reference.child("cart")
@@ -97,8 +102,8 @@ class ProductDetailFragment : BaseFragment() {
     private var isExpandView = true
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_product_detail, container, false)
         unbinder = ButterKnife.bind(this, view)
@@ -112,9 +117,9 @@ class ProductDetailFragment : BaseFragment() {
 
         var idCart = reference.push().key.toString()
         var data = mapOf(
-                "idCart" to idCart,
-                "idUser" to user.id,
-                "product" to product
+            "idCart" to idCart,
+            "idUser" to user.id,
+            "product" to product
         )
         reference.child(idCart).setValue(data)
 
@@ -123,27 +128,28 @@ class ProductDetailFragment : BaseFragment() {
                 for (data in snapshot.children) {
                     var idUser = data.child("idUser").value.toString()
                     if (idUser == user.id) {
-                        updateProduct(product){
+                        updateProduct(product) {
                             countProduct++
                             view?.post {
                                 (activity as MainActivity).createBadge(countProduct)
                                 NotifyDialogFragment.newInstance(
-                                        requireActivity().supportFragmentManager,
-                                        type = NotifyDialogFragment.CHECK_INFO,
-                                        content = getString(R.string.txt_add_cart), onCallback = {
-                                    //dialog.dismiss()
-                                    findNavController().popBackStack()
-                                    count = 0
-                                    check = false
-                                    countProduct = 0
-                                }, onCancelCallback = {
+                                    requireActivity().supportFragmentManager,
+                                    type = NotifyDialogFragment.CHECK_INFO,
+                                    content = getString(R.string.txt_add_cart), onCallback = {
+                                        //dialog.dismiss()
+                                        findNavController().popBackStack()
+                                        count = 0
+                                        check = false
+                                        countProduct = 0
+                                    }, onCancelCallback = {
 
-                                })
+                                    })
                             }
                         }
                     }
                 }
             }
+
             override fun onCancelled(error: DatabaseError) {}
         })
     }
@@ -202,20 +208,14 @@ class ProductDetailFragment : BaseFragment() {
         val data = Gson().fromJson(args.data, VehicleData::class.java)
         var user = Gson().fromJson(UserPrefs.getLocalData(requireContext()), LoginData::class.java)
         imgPhone.setOnClickListener {
-            if (MyUtils.hasPermission(requireContext(), android.Manifest.permission.CALL_PHONE)) {
-                actionCall(data.phone)
-            } else {
-                ActivityCompat.requestPermissions(
-                        requireActivity(),
-                        arrayOf(android.Manifest.permission.CALL_PHONE), 100
-                )
-            }
+            showPayOffBottomSheet(user.phone)
+            Log.d(TAG, "initControl: ")
         }
         imgChat.setOnClickListener {
             findNavController().navigate(
-                    ProductDetailFragmentDirections.actionProductDetailFragmentToChatFragment(
-                            Gson().toJson(data)
-                    )
+                ProductDetailFragmentDirections.actionProductDetailFragmentToChatFragment(
+                    Gson().toJson(data)
+                )
             )
         }
         imgBack.setOnClickListener {
@@ -223,11 +223,12 @@ class ProductDetailFragment : BaseFragment() {
         }
         btnBuyNow.setOnClickListener {
             val dataCart = VehicleData(
-                    status = MyEnum.ADDED_CART.Name(),
-                    id = data.id, imgs = data.imgs,
-                    title = data.title, des = data.des,
-                    price = data.price, phone = data.phone,
-                    createBy = data.createBy)
+                status = MyEnum.ADDED_CART.Name(),
+                id = data.id, imgs = data.imgs,
+                title = data.title, des = data.des,
+                price = data.price, phone = data.phone,
+                createBy = data.createBy
+            )
             actionAddCart(user, dataCart)
         }
         viewContact.setOnClickListener {
@@ -240,6 +241,23 @@ class ProductDetailFragment : BaseFragment() {
             }
             isExpandView = !isExpandView
         }
+    }
+
+    private fun makeThePhoneCallToZalo(phoneNumber: String?) {
+        startActivity(
+            Intent(
+                Intent.ACTION_VIEW, Uri.parse(
+                    "https://zalo.me/$phoneNumber"
+                )
+            )
+        )
+    }
+
+    private fun showPayOffBottomSheet(phoneNumber: String?) {
+        bottomSheet = BottomSheetChoosePhoneCall()
+        bottomSheet.show(activity?.supportFragmentManager!!, "MyBottomSheetA")
+        bottomSheet.setUserPhoneNumber(phoneNumber)
+        bottomSheet.setOnClick(this)
     }
 
     private fun changeRotate(button: AppCompatImageView?, from: Float, to: Float): ObjectAnimator {
@@ -268,9 +286,9 @@ class ProductDetailFragment : BaseFragment() {
     }
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
     ) {
         when (requestCode) {
             100 -> {
@@ -278,4 +296,48 @@ class ProductDetailFragment : BaseFragment() {
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
+
+    override fun onBottomSheetClick(option: String, phoneNumber: String?) {
+        Log.d(TAG, "onClick: $phoneNumber")
+        when (option) {
+            Const.FRAGMENT_EDIT_USER_MAKE_PHONE_CALL_BY_ZALO -> {
+                makeThePhoneCallToZalo(phoneNumber)
+                bottomSheet.dismissDialog()
+            }
+            Const.FRAGMENT_EDIT_USER_MAKE_PHONE_CALL -> {
+                makePhoneCall(phoneNumber)
+                bottomSheet.dismissDialog()
+            }
+            Const.FRAGMENT_EDIT_USER_SEND_MESSAGE -> {
+                sendMessageToUser(phoneNumber)
+                bottomSheet.dismissDialog()
+            }
+        }
+    }
+
+    private fun sendMessageToUser(phoneNumber: String?) {
+        val sendIntent = Intent(Intent.ACTION_VIEW)
+        sendIntent.data = Uri.parse("sms:$phoneNumber")
+        startActivity(sendIntent);
+    }
+
+    private fun makePhoneCall(phoneNumber: String?) {
+        if (phoneNumber != null) {
+            if (MyUtils.hasPermission(requireContext(), android.Manifest.permission.CALL_PHONE)) {
+                actionCall(phoneNumber!!)
+            } else {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    arrayOf(android.Manifest.permission.CALL_PHONE), 100
+                )
+            }
+        }
+
+    }
+
+    companion object {
+        private const val TAG = "KienDa"
+    }
+
+
 }

@@ -101,5 +101,9 @@
     <string name="txt_format_phone">Phone number is not correct</string>
     <string name="txt_format_Pass">Password must have least 6 characters</string>
 
+    <string name="fragment_edit_user_phone_call">Gọi điện thoại</string>
+    <string name="fragment_edit_user_phone_call_by_zalo">Nhắn tin zalo</string>
+    <string name="fragment_edit_user_send_message_to_app">Nhắn tin</string>
+
 
 </resources>
