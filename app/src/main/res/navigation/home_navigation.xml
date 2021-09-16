@@ -248,6 +248,10 @@
     <fragment
         android:id="@+id/editUserFragment"
         android:name="com.example.vehiclessale.profile.EditUserFragment"
-        android:label="EditUserFragment" />
+        android:label="EditUserFragment" >
+        <action
+            android:id="@+id/action_editUserFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
 </navigation>

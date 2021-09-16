@@ -29,7 +29,7 @@
 
     <style name="text_input_layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/transparent</item>
-        <item name="hintTextColor">@color/color_blue</item>
+        <item name="hintTextColor">#57A2CA</item>
         <item name="errorEnabled">true</item>
         <item name="android:layout_marginLeft">@dimen/_16</item>
         <item name="android:layout_marginRight">@dimen/_16</item>
@@ -46,6 +46,11 @@
     <style name="navText">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">#050505</item>
+    </style>
+
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">#000000</item>
+        <item name="boxStrokeWidth">2dp</item>
     </style>
 
 </resources>
