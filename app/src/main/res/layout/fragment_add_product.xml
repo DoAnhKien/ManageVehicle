@@ -22,9 +22,10 @@
         app:layout_constraintTop_toBottomOf="@id/layout_header">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvImages"
@@ -34,7 +35,7 @@
                 android:clipToPadding="false"
                 android:overScrollMode="never"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvNameProduct"
@@ -46,7 +47,7 @@
                 android:paddingBottom="@dimen/_10"
                 android:text="@string/title_name_product"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvImages"/>
+                app:layout_constraintTop_toBottomOf="@id/rvImages" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edtNameProduct"
@@ -57,8 +58,8 @@
                 android:layout_marginEnd="@dimen/_16"
                 android:background="@drawable/bg_edt"
                 android:hint="@string/type_name_product"
-                android:padding="@dimen/_10"
                 android:inputType="textNoSuggestions"
+                android:padding="@dimen/_10"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvNameProduct" />
 
@@ -106,8 +107,8 @@
                 android:layout_marginEnd="@dimen/_16"
                 android:background="@drawable/bg_edt"
                 android:hint="@string/contetn_price_product"
-                android:padding="@dimen/_10"
                 android:inputType="number"
+                android:padding="@dimen/_10"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPriceProduct" />
 
@@ -131,12 +132,67 @@
                 android:layout_marginEnd="@dimen/_16"
                 android:background="@drawable/bg_edt"
                 android:hint="@string/title_your_phone"
-                android:padding="@dimen/_10"
                 android:inputType="number"
+                android:padding="@dimen/_10"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvContact" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/text_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tile_type" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_10"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <RadioGroup
+                android:id="@+id/btnRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llType">
+
+
+                <RadioButton
+                    android:id="@+id/btnShowCar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/fragment_home_show_car" />
+
+                <RadioButton
+                    android:id="@+id/btnShowMotorbike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment_home_show_motorbike" />
+
+                <RadioButton
+                    android:id="@+id/btnShowElectricBike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment_home_show_electric_bike" />
+
+
+            </RadioGroup>
+
+
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -152,7 +208,7 @@
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="@dimen/txt_size_16"
-        app:layout_constraintTop_toBottomOf="@id/nested"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nested" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioGroup
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageView
@@ -39,6 +40,7 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_add_product.*
 import java.io.ByteArrayOutputStream
 
 class AddProductFragment : BaseFragment() {
@@ -65,7 +67,14 @@ class AddProductFragment : BaseFragment() {
     lateinit var edtPriceProduct: AppCompatEditText
 
     @BindView(R.id.edtContactPhone)
+
     lateinit var edtContactPhone: AppCompatEditText
+
+    @BindView(R.id.tvType)
+    lateinit var tvType: AppCompatTextView
+
+    @BindView(R.id.btnRadioGroup)
+    lateinit var radioType: RadioGroup
 
     lateinit var unbinder: Unbinder
     private var lstImage: MutableList<ImageData> = mutableListOf()
@@ -92,16 +101,20 @@ class AddProductFragment : BaseFragment() {
         initRv()
     }
 
+    companion object {
+        private const val TAG = "KienDa"
+    }
+
     override fun initControl() {
         imgAdapter.onAddCallback = {
             CaptureDialogFragment.newInstance(
-                    requireActivity().supportFragmentManager,
-                    onCaptureCallback = {
-                        checkPermissionCamera()
-                    },
-                    onGalleryCallback = {
-                        openFileSystemManager()
-                    })
+                requireActivity().supportFragmentManager,
+                onCaptureCallback = {
+                    checkPermissionCamera()
+                },
+                onGalleryCallback = {
+                    openFileSystemManager()
+                })
         }
 
         imgAdapter.onRemoveCallback = { posi, url ->
@@ -111,35 +124,75 @@ class AddProductFragment : BaseFragment() {
         imgBack.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        radioType.setOnCheckedChangeListener { group, checkId ->
+            when (checkId) {
+                R.id.btnShowCar -> {
+                    tvType.text = btnShowCar.text
+                    Log.d(TAG, "initControl: $tvType ")
+                }
+                R.id.btnShowMotorbike -> {
+                    tvType.text = btnShowMotorbike.text
+                    Log.d(TAG, "initControl: $tvType ")
+                }
+                R.id.btnShowElectricBike -> {
+                    tvType.text = btnShowElectricBike.text
+                    Log.d(TAG, "initControl: $tvType ")
+                }
+            }
+
+        }
         btnSave.setOnClickListener {
             showDialogLoading()
-            var user = Gson().fromJson(UserPrefs.getLocalData(requireContext()), LoginData::class.java)
+            var user =
+                Gson().fromJson(UserPrefs.getLocalData(requireContext()), LoginData::class.java)
             if (imgAdapter.list.size == 1 || loading) {
-                NotifyDialogFragment.newInstance(requireActivity().supportFragmentManager, type = NotifyDialogFragment.CHECK_INFO, content = getString(R.string.txt_checkImgs)) {
+                NotifyDialogFragment.newInstance(
+                    requireActivity().supportFragmentManager,
+                    type = NotifyDialogFragment.CHECK_INFO,
+                    content = getString(R.string.txt_checkImgs)
+                ) {
                     dialog.dismiss()
                 }
             } else if (edtNameProduct.text?.isEmpty() == true ||
-                    edtDesProduct.text?.isEmpty() == true || edtPriceProduct.text?.isEmpty() == true ||
-                    edtContactPhone.text?.isEmpty() == true) {
-                NotifyDialogFragment.newInstance(requireActivity().supportFragmentManager, type = NotifyDialogFragment.CHECK_INFO, content = getString(R.string.txt_fill)) {
+                edtDesProduct.text?.isEmpty() == true || edtPriceProduct.text?.isEmpty() == true ||
+                edtContactPhone.text?.isEmpty() == true
+            ) {
+                NotifyDialogFragment.newInstance(
+                    requireActivity().supportFragmentManager,
+                    type = NotifyDialogFragment.CHECK_INFO,
+                    content = getString(R.string.txt_fill)
+                ) {
                     hideDialogLoading()
                 }
             } else
-                addProductToFirebase(ProductRequestData(
+                addProductToFirebase(
+                    ProductRequestData(
                         status = MyEnum.POST_NEW.Name(),
                         list = listImage,
                         nameProduct = edtNameProduct.text.toString(),
                         des = edtDesProduct.text.toString(),
                         price = edtPriceProduct.text.toString(),
-                        phone = edtContactPhone.text.toString(), createby = Owner(user.id, name = user.name, phone = user.phone, address = user.address, email = user.email  )))
+                        phone = edtContactPhone.text.toString(),
+                        type = tvType.text.toString(),
+                        createby = Owner(
+                            user.id,
+                            name = user.name,
+                            phone = user.phone,
+                            address = user.address,
+                            email = user.email
+                        )
+                    )
+                )
         }
     }
+
 
     private var listImage: MutableList<ImageData> = mutableListOf()
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_add_product, container, false)
@@ -159,17 +212,22 @@ class AddProductFragment : BaseFragment() {
         val images = data.list
         val id = reference.push().key.toString()
         var map = mapOf(
-                "status" to data.status,
-                "idProduct" to id,
-                "name product" to data.nameProduct,
-                "description" to data.des,
-                "price" to data.price.toString(),
-                "images" to images,
-                "contact" to data.phone,
-                "create by" to data.createby
+            "status" to data.status,
+            "idProduct" to id,
+            "name product" to data.nameProduct,
+            "description" to data.des,
+            "price" to data.price.toString(),
+            "images" to images,
+            "contact" to data.phone,
+            "create by" to data.createby,
+            "type" to data.type
         )
         reference.child("listProduct").child(id).setValue(map)
-        NotifyDialogFragment.newInstance(requireActivity().supportFragmentManager, type = NotifyDialogFragment.CHECK_INFO, content = getString(R.string.add_product_success)) {
+        NotifyDialogFragment.newInstance(
+            requireActivity().supportFragmentManager,
+            type = NotifyDialogFragment.CHECK_INFO,
+            content = getString(R.string.add_product_success)
+        ) {
             backToPrevious()
         }
         hideDialogLoading()
@@ -180,7 +238,7 @@ class AddProductFragment : BaseFragment() {
         imgAdapter = ImageAdapter(lstImage.toMutableList())
         rvImages.apply {
             layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = imgAdapter
         }
     }
@@ -214,13 +272,13 @@ class AddProductFragment : BaseFragment() {
     private fun checkPermissionCamera() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (requireActivity().checkSelfPermission(Manifest.permission.CAMERA)
-                    == PackageManager.PERMISSION_DENIED ||
-                    requireActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_DENIED
+                == PackageManager.PERMISSION_DENIED ||
+                requireActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_DENIED
             ) {
                 val permission = arrayOf(
-                        Manifest.permission.CAMERA,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
                 )
                 requestPermissions(permission, MyUtils.PERMISSION_CODE)
             } else {
@@ -250,15 +308,15 @@ class AddProductFragment : BaseFragment() {
     }
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
     ) {
         when (requestCode) {
             MyUtils.PERMISSION_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] ==
-                        PackageManager.PERMISSION_GRANTED && grantResults[1] ==
-                        PackageManager.PERMISSION_GRANTED
+                    PackageManager.PERMISSION_GRANTED && grantResults[1] ==
+                    PackageManager.PERMISSION_GRANTED
                 ) {
                     openCamera()
                 }
@@ -273,10 +331,10 @@ class AddProductFragment : BaseFragment() {
                 if (resultCode == Activity.RESULT_OK) {
                     data?.let {
                         val uriImage =
-                                convertBitmapToURI(
-                                        requireContext(),
-                                        data.extras?.get("data") as Bitmap
-                                )
+                            convertBitmapToURI(
+                                requireContext(),
+                                data.extras?.get("data") as Bitmap
+                            )
                         saveImage(uriImage)
                     }
                 }

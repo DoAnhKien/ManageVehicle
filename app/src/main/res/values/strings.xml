@@ -44,6 +44,7 @@
     <string name="type_des_product">Type Vehicle Description </string>
     <string name="title_price_product">Price :</string>
     <string name="title_contact">Contact Phone :</string>
+    <string name="tile_type">Type :</string>
     <string name="type_price_product">Nhập giá tiền (theo đơn vị VND)</string>
     <string name="add_product">Add Product</string>
     <string name="save_product">Save</string>
@@ -104,6 +105,11 @@
     <string name="fragment_edit_user_phone_call">Gọi điện thoại</string>
     <string name="fragment_edit_user_phone_call_by_zalo">Nhắn tin zalo</string>
     <string name="fragment_edit_user_send_message_to_app">Nhắn tin</string>
+
+    <string name="fragment_home_tv_title">Bạn muốn lọc theo</string>
+    <string name="fragment_home_show_car">Ô tô</string>
+    <string name="fragment_home_show_motorbike">Xe máy</string>
+    <string name="fragment_home_show_electric_bike">Xe đạp điện</string>
 
 
 </resources>
