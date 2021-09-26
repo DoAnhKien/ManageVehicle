@@ -70,9 +70,21 @@ class EditUserFragment : BaseFragmentA<FragmentEditUserBinding>(), View.OnClickL
             userDatabases.child(user.id).updateChildren(userNameHashMap as Map<String, Any>)
                 .addOnSuccessListener {
                     Log.d(TAG, "updateAdminInformation: succees")
+                    UserPrefs.setLocalData(
+                        requireContext(), Gson().toJson(
+                            (LoginData(
+                                id = user.id,
+                                email = userGmail,
+                                name = userName,
+                                phone = userPhone,
+                                address = userAddress
+                            ))
+                        )
+                    )
                 }.addOnFailureListener {
                     Log.d(TAG, "updateTheUserPackage: + ${it.message}")
                 }
+            findNavController().navigate(R.id.action_editUserFragment_to_homeFragment)
             return
         }
         Toast.makeText(requireContext(), "Bạn cần điền đầy đủ thông tin", Toast.LENGTH_SHORT)
@@ -83,6 +95,7 @@ class EditUserFragment : BaseFragmentA<FragmentEditUserBinding>(), View.OnClickL
 
     private fun initData() {
         user = Gson().fromJson(UserPrefs.getLocalData(requireContext()), LoginData::class.java)
+
         binding?.user = user
     }
 

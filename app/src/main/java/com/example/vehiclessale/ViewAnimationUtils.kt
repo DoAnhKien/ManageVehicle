@@ -9,13 +9,13 @@ class ViewAnimationUtils {
     companion object {
         fun expand(v: View) {
             v.measure(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT)
-            val targtetHeight = v.measuredHeight
+            val targetHeight = v.measuredHeight
             v.layoutParams.height = 0
             v.visibility = FrameLayout.VISIBLE
             val a: Animation = object : Animation() {
                 override fun applyTransformation(interpolatedTime: Float, t: Transformation?) {
                     v.layoutParams.height =
-                        if (interpolatedTime == 1f) FrameLayout.LayoutParams.WRAP_CONTENT else (targtetHeight * interpolatedTime).toInt()
+                        if (interpolatedTime == 1f) FrameLayout.LayoutParams.WRAP_CONTENT else (targetHeight * interpolatedTime).toInt()
                     v.requestLayout()
                 }
 
@@ -23,7 +23,7 @@ class ViewAnimationUtils {
                     return true
                 }
             }
-            a.duration = ((targtetHeight / v.context.resources.displayMetrics.density).toLong())
+            a.duration = ((targetHeight / v.context.resources.displayMetrics.density).toLong())
             v.startAnimation(a)
         }
 
