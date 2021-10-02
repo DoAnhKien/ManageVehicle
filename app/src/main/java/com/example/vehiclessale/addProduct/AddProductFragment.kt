@@ -93,6 +93,7 @@ class AddProductFragment : BaseFragment() {
 
     override fun initUI() {
         tvTitleCenter.text = getString(R.string.add_product)
+        tvType.text = resources.getString(R.string.fragment_home_show_car)
         (activity as MainActivity).apply {
             enableBottom(false)
             //notificationOrder()
