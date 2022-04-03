@@ -31,6 +31,7 @@ import com.google.gson.Gson
 import com.smarteist.autoimageslider.SliderView
 
 import android.net.Uri
+import android.os.Handler
 import android.util.Log
 
 
@@ -208,7 +209,7 @@ class ProductDetailFragment : BaseFragment(), OnBottomSheetClick {
         val data = Gson().fromJson(args.data, VehicleData::class.java)
         var user = Gson().fromJson(UserPrefs.getLocalData(requireContext()), LoginData::class.java)
         imgPhone.setOnClickListener {
-            showPayOffBottomSheet(user.phone)
+            showPayOffBottomSheet(data.createBy.phone)
             Log.d(TAG, "initControl: ")
         }
         imgChat.setOnClickListener {
