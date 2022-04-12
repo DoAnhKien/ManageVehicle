@@ -14,7 +14,9 @@ data class ProductRequestData(
     val type: String = ""
 )
 
-data class ImageData(val id: String = "", val urlImg: String = "")
+data class ImageData(
+    val id: String = "",
+    val urlImg: String = "")
 
 data class Owner(
     val id: String = "",

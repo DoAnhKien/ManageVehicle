@@ -15,7 +15,9 @@ import butterknife.ButterKnife
 import butterknife.Unbinder
 import com.example.vehiclessale.R
 
-class CaptureDialogFragment(val onCaptureCallback: () -> Unit, val onGalleryCallback: () -> Unit) : DialogFragment() {
+class CaptureDialogFragment(
+    val onCaptureCallback: () -> Unit,
+    val onGalleryCallback: () -> Unit) : DialogFragment() {
 
     lateinit var unbinder: Unbinder
 
