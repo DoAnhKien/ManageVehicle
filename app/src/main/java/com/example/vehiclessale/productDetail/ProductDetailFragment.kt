@@ -1,6 +1,7 @@
 package com.example.vehiclessale.productDetail
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -33,6 +34,8 @@ import com.smarteist.autoimageslider.SliderView
 import android.net.Uri
 import android.os.Handler
 import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 
 
 class ProductDetailFragment : BaseFragment(), OnBottomSheetClick {
@@ -101,6 +104,8 @@ class ProductDetailFragment : BaseFragment(), OnBottomSheetClick {
 
     private var check = false
     private var isExpandView = true
+    private var countId = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -137,11 +142,12 @@ class ProductDetailFragment : BaseFragment(), OnBottomSheetClick {
                                     requireActivity().supportFragmentManager,
                                     type = NotifyDialogFragment.CHECK_INFO,
                                     content = getString(R.string.txt_add_cart), onCallback = {
-                                        //dialog.dismiss()
-                                        findNavController().popBackStack()
+//                                        dialog.dismiss()
+                                        findNavControllerSafely()?.navigate(R.id.homeFragment)
                                         count = 0
                                         check = false
                                         countProduct = 0
+                                        countId = 0
                                     }, onCancelCallback = {
 
                                     })
@@ -261,6 +267,7 @@ class ProductDetailFragment : BaseFragment(), OnBottomSheetClick {
         bottomSheet.setOnClick(this)
     }
 
+    @SuppressLint("RestrictedApi")
     private fun changeRotate(button: AppCompatImageView?, from: Float, to: Float): ObjectAnimator {
         val animator = ObjectAnimator.ofFloat(button, "rotation", from, to)
         animator.duration = 300
@@ -273,8 +280,11 @@ class ProductDetailFragment : BaseFragment(), OnBottomSheetClick {
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.children.forEach {
                     if (it.child("idProduct").value.toString() == dataCart.id) {
-                        refProduct.child(dataCart.id).child("status").setValue(dataCart.status)
-                        onCallback.invoke()
+                        countId++
+                        if (countId == 1) {
+                            refProduct.child(dataCart.id).child("status").setValue(dataCart.status)
+                            onCallback.invoke()
+                        }
                     }
                 }
             }
@@ -341,4 +351,11 @@ class ProductDetailFragment : BaseFragment(), OnBottomSheetClick {
     }
 
 
+    fun Fragment.findNavControllerSafely(): NavController? {
+        return if (isAdded) {
+            findNavController()
+        } else {
+            null
+        }
+    }
 }

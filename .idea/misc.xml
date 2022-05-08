@@ -23,6 +23,7 @@
         <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/fragment_list_chats.xml" value="0.35989583333333336" />
         <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/fragment_login.xml" value="0.35989583333333336" />
         <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/fragment_my_product.xml" value="0.35989583333333336" />
+        <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/fragment_notification.xml" value="0.35052083333333334" />
         <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/fragment_orders.xml" value="0.35989583333333336" />
         <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/fragment_product_detail.xml" value="0.35989583333333336" />
         <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/fragment_profile.xml" value="0.35989583333333336" />
@@ -31,7 +32,16 @@
         <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/fragment_to_ship.xml" value="0.35989583333333336" />
         <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/layout_dialog_fragment.xml" value="0.35989583333333336" />
         <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/layout_header.xml" value="0.35989583333333336" />
+        <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/layout_image_slide.xml" value="0.35052083333333334" />
+        <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/layout_item_add_img.xml" value="0.35052083333333334" />
+        <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/layout_item_card_profile.xml" value="0.35052083333333334" />
+        <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/layout_item_cart.xml" value="0.35052083333333334" />
+        <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/layout_item_image_load.xml" value="0.35052083333333334" />
+        <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/layout_item_notify.xml" value="0.12685185185185185" />
+        <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/layout_item_vehicle.xml" value="0.35052083333333334" />
         <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/layout_noti_seller.xml" value="0.35052083333333334" />
+        <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/layout/layout_notify_dialog.xml" value="0.35052083333333334" />
+        <entry key="..\:/Freelancer/ManageVehicle/app/src/main/res/menu/menu_bottom.xml" value="0.146875" />
       </map>
     </option>
   </component>
