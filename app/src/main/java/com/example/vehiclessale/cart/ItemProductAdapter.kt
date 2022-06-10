@@ -104,7 +104,7 @@ class ItemProductAdapter(var list: MutableList<CartData> = mutableListOf(), var 
             Glide.with(itemView).load(data.product.imgs[0].urlImg).into(img)
             tvTitle.text = data.product.title
             tvDes.text = data.product.des
-            tvPrice.text = MyUtils.formatPrice(data.product.price.toDouble()) + " đ"
+            tvPrice.text = MyUtils.formatPrice(data.product.price.toDouble()) + "$"
             layout_delete.setOnClickListener {
                 onDeleteCallback.invoke(adapterPosition, data)
             }

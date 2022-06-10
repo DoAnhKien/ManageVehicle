@@ -11,30 +11,35 @@ import com.example.vehiclessale.R
 import com.example.vehiclessale.login.LoginData
 import java.text.SimpleDateFormat
 
-class MessageAdapter(var list: MutableList<MessData> = mutableListOf(), val user: LoginData = LoginData()) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MessageAdapter(
+    var list: MutableList<MessData> = mutableListOf(),
+    val user: LoginData = LoginData()
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    fun addAll(lst: MutableList<MessData>){
+    fun addAll(lst: MutableList<MessData>) {
         list.clear()
         list.addAll(lst)
         notifyDataSetChanged()
     }
-    fun addItem(item: MessData){
+
+    fun addItem(item: MessData) {
         list.add(item)
         notifyItemInserted(list.size - 1)
-       // notifyItemRangeChanged(list.size - 1, list.size)
+        // notifyItemRangeChanged(list.size - 1, list.size)
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             1 -> {
                 SenderViewHolder(
-                        LayoutInflater.from(parent.context)
-                                .inflate(R.layout.layout_item_sender, parent, false)
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.layout_item_sender, parent, false)
                 )
             }
             else -> {
                 ReceiverViewHolder(
-                        LayoutInflater.from(parent.context)
-                                .inflate(R.layout.layout_item_receiver, parent, false)
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.layout_item_receiver, parent, false)
                 )
             }
         }
@@ -63,6 +68,7 @@ class MessageAdapter(var list: MutableList<MessData> = mutableListOf(), val user
     inner class SenderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         @BindView(R.id.tvNoiDung)
         lateinit var tvNoiDung: AppCompatTextView
+
         @BindView(R.id.tvTime)
         lateinit var tvTime: AppCompatTextView
 
@@ -80,6 +86,7 @@ class MessageAdapter(var list: MutableList<MessData> = mutableListOf(), val user
     inner class ReceiverViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         @BindView(R.id.tvNoiDung)
         lateinit var tvNoiDung: AppCompatTextView
+
         @BindView(R.id.tvTime)
         lateinit var tvTime: AppCompatTextView
 

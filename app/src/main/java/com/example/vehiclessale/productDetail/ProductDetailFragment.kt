@@ -193,7 +193,7 @@ class ProductDetailFragment : BaseFragment(), OnBottomSheetClick {
         }
         tvTitle.text = data.title
         tvDes.text = data.des
-        tvPrice.text = MyUtils.formatPrice(data.price.toDouble()) + " đ"
+        tvPrice.text = MyUtils.formatPrice(data.price.toDouble()) + "$"
         tvNameSeller.text = "Seller: ${data.createBy.name}"
         tvAddress.text = "Address: ${data.createBy.address}"
         imageSlider.indicatorSelectedColor = Color.WHITE

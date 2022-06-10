@@ -75,8 +75,8 @@ class ChatFragment : Fragment() {
 
     private var checkToScroll = false
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_chat, container, false)
         unbinder = ButterKnife.bind(this, view)
@@ -94,7 +94,7 @@ class ChatFragment : Fragment() {
             tvTitleBack.text = data.createBy.name
             Glide.with(view).load(data.imgs[0].urlImg).into(img)
             tvDes.text = data.des
-            tvPrice.text = MyUtils.formatPrice(data.price.toDouble()) + " đ"
+            tvPrice.text = MyUtils.formatPrice(data.price.toDouble()) + "$"
 
         }
 
@@ -112,7 +112,11 @@ class ChatFragment : Fragment() {
             edtTypeMess.text?.clear()
         }
         cardview.setOnClickListener {
-            findNavController().navigate(ChatFragmentDirections.actionChatFragmentToProductDetailFragment(args.createBy))
+            findNavController().navigate(
+                ChatFragmentDirections.actionChatFragmentToProductDetailFragment(
+                    args.createBy
+                )
+            )
         }
         initRv(data, user)
         return view
@@ -125,24 +129,24 @@ class ChatFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (args.message != "no") {
                     var map = mapOf(
-                            "idSender" to user.id,
-                            "name sender" to user.name,
-                            "idReceiver" to mess.idSender,
-                            "name receiver" to mess.nameSender,
-                            "content" to txt,
-                            "idProduct" to data.id,
-                            "time" to date
+                        "idSender" to user.id,
+                        "name sender" to user.name,
+                        "idReceiver" to mess.idSender,
+                        "name receiver" to mess.nameSender,
+                        "content" to txt,
+                        "idProduct" to data.id,
+                        "time" to date
                     )
                     reference.child(date.toString()).setValue(map)
                 } else {
                     var map = mapOf(
-                            "idSender" to user.id,
-                            "name sender" to user.name,
-                            "idReceiver" to data.createBy.id,
-                            "name receiver" to data.createBy.name,
-                            "content" to txt,
-                            "idProduct" to data.id,
-                            "time" to date
+                        "idSender" to user.id,
+                        "name sender" to user.name,
+                        "idReceiver" to data.createBy.id,
+                        "name receiver" to data.createBy.name,
+                        "content" to txt,
+                        "idProduct" to data.id,
+                        "time" to date
                     )
                     reference.child(date.toString()).setValue(map)
                 }
@@ -160,7 +164,7 @@ class ChatFragment : Fragment() {
         messageAdapter = MessageAdapter(user = user)
         rvMess.apply {
             val _layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             _layoutManager.stackFromEnd = true
             layoutManager = _layoutManager
             adapter = messageAdapter
@@ -173,7 +177,7 @@ class ChatFragment : Fragment() {
                 messageAdapter.list.clear()
                 for (data in dataSnapshot.children) {
                     val generic: GenericTypeIndicator<Date> =
-                            object : GenericTypeIndicator<Date>() {}
+                        object : GenericTypeIndicator<Date>() {}
 
                     val idSender = data.child("idSender").value.toString()
                     val idReceiver = data.child("idReceiver").value.toString()
@@ -184,29 +188,29 @@ class ChatFragment : Fragment() {
                     val idProduct = data.child("idProduct").value.toString()
                     time?.let {
                         if ((idReceiver == user.id || idSender == user.id)
-                                && (idReceiver == owner.createBy.id || idSender == owner.createBy.id)
-                                && owner.id == idProduct
+                            && (idReceiver == owner.createBy.id || idSender == owner.createBy.id)
+                            && owner.id == idProduct
                         ) {
                             messageAdapter.addItem(
-                                    MessData(
-                                            idProduct,
-                                            idSender,
-                                            nameSender,
-                                            idReceiver,
-                                            nameReceiver,
-                                            content,
-                                            time
-                                    )
+                                MessData(
+                                    idProduct,
+                                    idSender,
+                                    nameSender,
+                                    idReceiver,
+                                    nameReceiver,
+                                    content,
+                                    time
+                                )
                             )
                         }
 
                     }
                 }
                 messageAdapter.notifyDataSetChanged()
-              //  if(checkToScroll){
-                    //checkToScroll = false
-                    rvMess.smoothScrollToPosition(messageAdapter.list.size)
-               // }
+                //  if(checkToScroll){
+                //checkToScroll = false
+                rvMess.smoothScrollToPosition(messageAdapter.list.size)
+                // }
             }
 
 

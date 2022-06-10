@@ -82,7 +82,7 @@ class ItemOrderAdapter (var list: MutableList<PlaceOrderData> = mutableListOf(),
             Glide.with(itemView).load(data.product.product.imgs[0].urlImg).into(img)
             tvTitle.text = data.product.product.title
             tvDes.text = data.product.product.des
-            tvPrice.text = MyUtils.formatPrice(data.product.product.price.toDouble()) + " đ"
+            tvPrice.text = MyUtils.formatPrice(data.product.product.price.toDouble()) + "$"
             btnDelivering.setOnClickListener {
                 onUpdateStatus.invoke(data)
             }

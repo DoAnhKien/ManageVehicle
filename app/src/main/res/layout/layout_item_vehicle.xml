@@ -57,7 +57,7 @@
         android:id="@+id/tvPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="32.000.000đ"
+        android:text="32.000.000$"
         android:textSize="@dimen/txt_size_14"
         android:textColor="@color/red_FFBF7777"
         android:textAllCaps="false"

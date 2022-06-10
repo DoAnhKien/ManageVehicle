@@ -54,7 +54,7 @@ class ItemAdapter(val list: MutableList<VehicleData> = mutableListOf()) : Recycl
         fun bind(data: VehicleData){
             tvtitle.text = data.title
             tvDes.text = data.des
-            tvPrice.text = MyUtils.formatPrice(data.price.toDouble()) + " đ"
+            tvPrice.text = MyUtils.formatPrice(data.price.toDouble()) + "$"
             Glide.with(itemView).load(data.imgs[0].urlImg).into(imgVehicle)
             itemView.setOnClickListener { onClickCallback.invoke(data) }
         }

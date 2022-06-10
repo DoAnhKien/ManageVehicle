@@ -16,7 +16,8 @@ data class ProductRequestData(
 
 data class ImageData(
     val id: String = "",
-    val urlImg: String = "")
+    val urlImg: String = ""
+)
 
 data class Owner(
     val id: String = "",
